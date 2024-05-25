@@ -43,12 +43,15 @@
         function fillTax(value) {
             document.getElementById('tax_percentage').value = value;
         }
+        function scrollToResult(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </head>
 <body>
     <div class="container">
         <h1>Percentage Calculator</h1>
-        <form method="post" class="form-inline">
+        <form method="post" class="form-inline" onsubmit="scrollToResult('percentage_result');">
             <div class="form-group mb-2">
                 <label for="base" class="sr-only">Base:</label>
                 <input type="text" id="base" name="base" class="form-control" placeholder="Base" required>
@@ -60,7 +63,7 @@
             <button type="submit" name="calculate_percentage" class="btn btn-primary mb-2">Calculate</button>
         </form>
         {% if percentage_result %}
-        <div class="result">
+        <div id="percentage_result" class="result">
             <h2>Result: {{ percentage_result }}</h2>
         </div>
         {% endif %}
@@ -68,7 +71,7 @@
         <hr>
 
         <h1>Cloud Base Calculator</h1>
-        <form method="post">
+        <form method="post" onsubmit="scrollToResult('cloud_base_result');">
             <div class="form-group">
                 <label for="surface_temp">Surface Temperature:</label>
                 <input type="text" id="surface_temp" name="surface_temp" class="form-control" placeholder="Surface Temperature" required>
@@ -91,7 +94,7 @@
             <button type="submit" name="calculate_cloud_base" class="btn btn-primary mt-3">Calculate</button>
         </form>
         {% if cloud_base_result %}
-        <div class="result">
+        <div id="cloud_base_result" class="result">
             <h2>Result: {{ cloud_base_result }} {{ 'm' if convert_to_meters else 'feet' }}</h2>
         </div>
         {% endif %}
@@ -99,7 +102,7 @@
         <hr>
 
         <h1>Sales Price Calculator</h1>
-        <form method="post">
+        <form method="post" onsubmit="scrollToResult('sales_price_result');">
             <div class="form-group">
                 <label for="cost_price">Cost Price:</label>
                 <input type="text" id="cost_price" name="cost_price" class="form-control" placeholder="Cost Price" required>
@@ -133,7 +136,7 @@
             <button type="submit" name="calculate_sales_price" class="btn btn-primary mt-3">Calculate</button>
         </form>
         {% if sales_price_result %}
-        <div class="result">
+        <div id="sales_price_result" class="result">
             <h2>Result: {{ sales_price_result }}</h2>
         </div>
         {% endif %}
