@@ -32,6 +32,9 @@
             background: #e9ecef;
             border-radius: 5px;
         }
+        .form-group, .form-check, .btn-group {
+            margin-bottom: 15px;
+        }
     </style>
     <script>
         function fillMargin(value) {
@@ -110,7 +113,7 @@
                     <button type="button" class="btn btn-secondary" onclick="fillMargin(40)">40%</button>
                     <button type="button" class="btn btn-secondary" onclick="fillMargin(50)">50%</button>
                 </div>
-                <input type="text" id="margin" name="margin" class="form-control" placeholder="Margin" required>
+                <input type="text" id="margin" name="margin" class="form-control" placeholder="Margin" value="40" required>
             </div>
             <div class="form-group">
                 <label for="tax_percentage">Tax Percentage:</label>
