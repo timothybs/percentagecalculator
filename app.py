@@ -20,6 +20,7 @@ def index():
             try:
                 surface_temp = float(request.form.get("surface_temp", ""))
                 dew_point = float(request.form.get("dew_point", ""))
+                elevation = float(request.form.get("elevation", 0))
                 unit = request.form.get("unit", "C")
                 convert_to_meters = 'convert_to_meters' in request.form
 
@@ -27,6 +28,8 @@ def index():
                     cloud_base_result = abs((surface_temp - dew_point) / 4.4) * 1000
                 else:  # Default to Celsius
                     cloud_base_result = abs((surface_temp - dew_point) / 2.5) * 1000
+
+                cloud_base_result += elevation  # Add elevation to the result in feet
 
                 if convert_to_meters:
                     cloud_base_result = cloud_base_result * 0.3048  # Convert feet to meters
